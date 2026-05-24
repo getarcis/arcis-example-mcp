@@ -1,0 +1,29 @@
+name: CI
+
+# Run the demo script on every push + PR. demo.js exits 1 on any
+# unexpected outcome (false positive on a safe input OR a missed
+# injection on a malicious input), so CI fails the moment the V32
+# detection corpus regresses.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ["20", "22"]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install --no-audit --no-fund
+      - run: npm run demo

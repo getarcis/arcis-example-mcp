@@ -1,0 +1,18 @@
+{
+  "name": "arcis-example-mcp",
+  "version": "1.0.0",
+  "description": "Demo: prompt-injection payloads against an AI agent toolcall pipeline, caught by Arcis V32-V34 detectors.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "demo": "node demo.js"
+  },
+  "license": "MIT",
+  "author": "Gagan CM",
+  "dependencies": {
+    "@arcis/node": "^1.6.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
